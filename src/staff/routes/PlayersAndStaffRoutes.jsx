@@ -12,7 +12,7 @@ export const PlayersAndStaffRoutes = () => {
                 <Route path="players" element={ <PlayersPage /> } />
                 <Route path="staff" element={ <StaffPage /> } />
 
-                <Route path="/:teamMember/:id" element={ <TeamMemberPage /> } />
+                <Route path="/:roleMember/:id" element={ <TeamMemberPage /> } />
 
                 <Route path="/" element={ <Navigate to='/players' /> } />
             </Routes>
