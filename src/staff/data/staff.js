@@ -148,7 +148,7 @@ export const staff = [
         'name': 'Lionel',
         'lastName': 'Scaloni',
         'role': 'staff', 
-        'position': 'Manager',
+        'position': 'manager',
     },
     {
         'id': 'lisandro-martinez',

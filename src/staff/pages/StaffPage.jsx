@@ -1,7 +1,10 @@
+import { PlayersAndStaffList } from "../components/PlayersAndStaffList"
 
 
 export const StaffPage = () => {
     return (
-        <div>StaffPage</div>
+        <>
+            <PlayersAndStaffList role={ 'staff' } />
+        </>
     )
 }
