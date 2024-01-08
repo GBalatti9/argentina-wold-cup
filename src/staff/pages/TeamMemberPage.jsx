@@ -29,7 +29,7 @@ export const TeamMemberPage = () => {
                         <li className="list-group-item"> 
                             { member.team 
                             ? <> <b> Team: </b> { member.team } </>
-                            : 'NO HAY EQUIPO' } </li>
+                            : <> <b> Last team: </b> { member.lastTeam } </> } </li>
                         <li className="list-group-item"> <b> Position: </b> { member.position } </li>
                     </ul>
             
