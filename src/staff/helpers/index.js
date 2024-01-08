@@ -1,1 +1,1 @@
-export * from './getPersonByRole';
+export * from './getMemberByRole';

@@ -1,10 +1,11 @@
-import { getPersonByRole } from "../helpers"
+
+import { getMemberByRole } from "../helpers";
 import { PlayersAndStaffCard } from "./PlayersAndStaffCard";
 
 
 export const PlayersAndStaffList = ({ role }) => {
 
-    const members = getPersonByRole( role );
+    const members = getMemberByRole( role );
 
     return (
         <div className="row rows-cols-1 row-cols-md-3">

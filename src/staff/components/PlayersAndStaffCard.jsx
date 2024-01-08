@@ -5,6 +5,7 @@ export const PlayersAndStaffCard = ({
     id,
     name,
     lastName,
+    role,
     team = '',
     position
 }) => {
@@ -24,7 +25,7 @@ export const PlayersAndStaffCard = ({
                         }
                         <p className="card-text"> <span className="fw-bold"> Position: </span> { position }</p>
                         
-                    <Link to={`/player/${id}`} >
+                    <Link to={`/${role}/${id}`} >
                         More info...
                     </Link>
                     </div>

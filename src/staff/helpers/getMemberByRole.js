@@ -1,6 +1,6 @@
 import { staff } from '../data/staff';
 
-export const getPersonByRole = ( role ) => {
+export const getMemberByRole = ( role ) => {
 
     const validRoles = ['player', 'staff'];
 
