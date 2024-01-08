@@ -26,7 +26,10 @@ export const TeamMemberPage = () => {
                 <h3>{ `${member.name}  ${member.lastName}` }</h3>
                 <ul className="list-group list-group-flush">
                         <li className="list-group-item"> <b> Role: </b> { member.role } </li>
-                        <li className="list-group-item"> <b> Team: </b> { member.team } </li>
+                        <li className="list-group-item"> 
+                            { member.team 
+                            ? <> <b> Team: </b> { member.team } </>
+                            : 'NO HAY EQUIPO' } </li>
                         <li className="list-group-item"> <b> Position: </b> { member.position } </li>
                     </ul>
             
