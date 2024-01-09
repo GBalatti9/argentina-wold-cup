@@ -29,6 +29,7 @@ export const TeamMemberPage = () => {
                 <h3>{ `${member.name}  ${member.lastName}` }</h3>
                 <ul className="list-group list-group-flush">
                         <li className="list-group-item"> <b> Age: </b> { age } </li>
+                        { member.nickname && <li className="list-group-item"> <b> Nickname: </b> { member.nickname } </li> }
                         <li className="list-group-item"> <b> Role: </b> { member.role } </li>
                         <li className="list-group-item"> 
                             { member.team 
