@@ -18,7 +18,7 @@ export const PlayersAndStaffRoutes = () => {
                     
                     <Route path="/:roleMember/:id" element={ <TeamMemberPage /> } />
 
-                    <Route path="/" element={ <Navigate to='/players' /> } />
+                    <Route path="*" element={ <Navigate to='/players' /> } />
                 </Routes>
             </div>
         </>
