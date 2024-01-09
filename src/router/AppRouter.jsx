@@ -2,15 +2,31 @@ import { Route, Routes } from "react-router-dom";
 
 import { LoginPage, RegisterPage } from "../auth";
 import { PlayersAndStaffRoutes } from "../staff";
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
 
 export const AppRouter = () => {
     return (
         <>
             <Routes>
-                <Route path="login" element={<LoginPage />} />
-                <Route path="register" element={<RegisterPage />} />
+                <Route path="login" element = { 
+                <PublicRoute>
+                    <LoginPage /> 
+                </PublicRoute>
+            
+            } />
+                <Route path="register" element = { 
+                    <PublicRoute>
+                        <RegisterPage />
+                    </PublicRoute>
+            
+            } />
 
-                <Route path="*" element={<PlayersAndStaffRoutes />} />
+                <Route path="*" element={
+                    <PrivateRoute>
+                        <PlayersAndStaffRoutes />
+                    </PrivateRoute>
+                } />
             </Routes>
         </>
     )
