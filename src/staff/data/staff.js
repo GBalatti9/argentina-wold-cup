@@ -5,7 +5,7 @@ export const staff = [
         'lastName': 'Gómez',
         'role': 'Player', 
         'team': 'Monza',
-        'position': 'midfielder',
+        'position': 'Midfielder',
     },
     {
         'id': 'alexis-macallister',
@@ -13,7 +13,7 @@ export const staff = [
         'lastName': 'Mac Allister',
         'role': 'Player', 
         'team': 'Liverpool',
-        'position': 'midfielder',
+        'position': 'Midfielder',
     },
     {
         'id': 'angel-correa',
@@ -21,7 +21,7 @@ export const staff = [
         'lastName': 'Correa',
         'role': 'Player', 
         'team': 'Atlético de Madrid',
-        'position': 'striker',
+        'position': 'Striker',
     },
     {
         'id': 'angel-dimaria',
@@ -29,7 +29,7 @@ export const staff = [
         'lastName': 'Di María',
         'role': 'Player', 
         'team': 'Benfica',
-        'position': 'striker',
+        'position': 'Striker',
     },
     {
         'id': 'cuti-romero',
@@ -37,7 +37,7 @@ export const staff = [
         'lastName': 'Romero',
         'role': 'Player', 
         'team': 'Tottenham',
-        'position': 'defender',
+        'position': 'Defender',
     },
     {
         'id': 'dibu-martinez',
@@ -45,7 +45,7 @@ export const staff = [
         'lastName': 'Martínez',
         'role': 'Player', 
         'team': 'Aston Villa',
-        'position': 'goalkeeper',
+        'position': 'Goalkeeper',
     },
     {
         'id': 'enzo-fernandez',
@@ -53,7 +53,7 @@ export const staff = [
         'lastName': 'Fernández',
         'role': 'Player', 
         'team': 'Chelsea',
-        'position': 'midfielder',
+        'position': 'Midfielder',
     },
     {
         'id': 'exequiel-palacios',
@@ -61,7 +61,7 @@ export const staff = [
         'lastName': 'Palacios',
         'role': 'Player', 
         'team': 'Bayer 04 Leverkusen',
-        'position': 'midfielder',
+        'position': 'Midfielder',
     },
     {
         'id': 'franco-armani',
@@ -69,7 +69,7 @@ export const staff = [
         'lastName': 'Armani',
         'role': 'Player', 
         'team': 'River Plate',
-        'position': 'goalkeeper',
+        'position': 'Goalkeeper',
     },
     {
         'id': 'german-pezzella',
@@ -77,7 +77,7 @@ export const staff = [
         'lastName': 'Pezzella',
         'role': 'Player', 
         'team': 'Real Betis',
-        'position': 'defender',
+        'position': 'Defender',
     },
     {
         'id': 'geronimo-rulli',
@@ -85,7 +85,7 @@ export const staff = [
         'lastName': 'Rulli',
         'role': 'Player', 
         'team': 'Ajax',
-        'position': 'goalkeeper',
+        'position': 'Goalkeeper',
     },
     {
         'id': 'gonzalo-montiel',
@@ -93,7 +93,7 @@ export const staff = [
         'lastName': 'Montiel',
         'role': 'Player', 
         'team': 'Nottingham Forest',
-        'position': 'defender',
+        'position': 'Defender',
     },
     {
         'id': 'guido-rodriguez',
@@ -101,7 +101,7 @@ export const staff = [
         'lastName': 'Rodríguez',
         'role': 'Player', 
         'team': 'Betis',
-        'position': 'midfielder',
+        'position': 'Midfielder',
     },
     {
         'id': 'juan-foyth',
@@ -109,7 +109,7 @@ export const staff = [
         'lastName': 'Foyth',
         'role': 'Player', 
         'team': 'Villarreal',
-        'position': 'defender',
+        'position': 'Defender',
     },
     {
         'id': 'julian-alvarez',
@@ -117,7 +117,7 @@ export const staff = [
         'lastName': 'Álvarez',
         'role': 'Player', 
         'team': 'Manchester City',
-        'position': 'striker',
+        'position': 'Striker',
     },
     {
         'id': 'lautaro-martinez',
@@ -125,7 +125,7 @@ export const staff = [
         'lastName': 'Martínez',
         'role': 'Player', 
         'team': 'Inter',
-        'position': 'striker',
+        'position': 'Striker',
     },
     {
         'id': 'leandro-paredes',
@@ -133,7 +133,7 @@ export const staff = [
         'lastName': 'Paredes',
         'role': 'Player', 
         'team': 'Roma',
-        'position': 'midfielder',
+        'position': 'Midfielder',
     },
     {
         'id': 'lionel-messi',
@@ -141,7 +141,7 @@ export const staff = [
         'lastName': 'Messi',
         'role': 'Player', 
         'team': 'Inter Miami',
-        'position': 'striker',
+        'position': 'Striker',
     },
     {
         'id': 'lionel-scaloni',
@@ -157,7 +157,7 @@ export const staff = [
         'lastName': 'Martínez',
         'role': 'Player', 
         'team': 'Manchester United',
-        'position': 'defender',
+        'position': 'Defender',
     },
     {
         'id': 'marcos-acuna',
@@ -165,7 +165,7 @@ export const staff = [
         'lastName': 'Acuña',
         'role': 'Player', 
         'team': 'Sevilla',
-        'position': 'defender',
+        'position': 'Defender',
     },
     {
         'id': 'martin-tocalli',
@@ -181,7 +181,7 @@ export const staff = [
         'lastName': 'Molina',
         'role': 'Player', 
         'team': 'Atlético de Madrid',
-        'position': 'defender',
+        'position': 'Defender',
     },
     {
         'id': 'nicolas-otamendi',
@@ -189,7 +189,7 @@ export const staff = [
         'lastName': 'Otamendi',
         'role': 'Player', 
         'team': 'Benfica',
-        'position': 'defender',
+        'position': 'Defender',
     },
     {
         'id': 'nicolas-tagliafico',
@@ -197,7 +197,7 @@ export const staff = [
         'lastName': 'Tagliafico',
         'role': 'Player', 
         'team': 'Olympique de lyon',
-        'position': 'defender',
+        'position': 'Defender',
     },
     {
         'id': 'pablo-aimar',
@@ -213,7 +213,7 @@ export const staff = [
         'lastName': 'Dybala',
         'role': 'Player', 
         'team': 'Roma',
-        'position': 'striker',
+        'position': 'Striker',
     },
     {
         'id': 'roberto-ayala',
@@ -229,7 +229,7 @@ export const staff = [
         'lastName': 'De Paul',
         'role': 'Player', 
         'team': 'Atlético de Madrid',
-        'position': 'midfielder',
+        'position': 'Midfielder',
     },
     {
         'id': 'thiago-almada',
@@ -237,7 +237,7 @@ export const staff = [
         'lastName': 'Almada',
         'role': 'Player', 
         'team': 'Atlanta United',
-        'position': 'midfielder',
+        'position': 'Midfielder',
     },
     {
         'id': 'walter-samuel',

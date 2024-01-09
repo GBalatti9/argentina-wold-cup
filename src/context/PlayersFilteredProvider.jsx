@@ -16,7 +16,7 @@ export const PlayersFilteredProvider = ({ children }) => {
         const members = getMemberByRole( role );
         if (filter && filter !== 'None') {
             const wordToFilter = filterClicked.slice(0, -1).toLowerCase();
-            const playersFilterByPosition = members.filter(( player ) => player.position === wordToFilter);
+            const playersFilterByPosition = members.filter(( player ) => player.position.toLowerCase() === wordToFilter);
             return playersFilterByPosition;
         } else {
             return members;
