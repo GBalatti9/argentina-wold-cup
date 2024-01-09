@@ -6,12 +6,12 @@ export const Navbar = () => {
 
     return (
         <>
-            <nav className='navbar navbar-expand-sm navbar-dark bg-dark p-2'>
+            <nav className='navbar navbar-expand-sm navbar-dark bg-dark p-2 mb-4 sticky-top'>
                 <Link
                     className='navbar-brand'
                     to={ pathname === '/players' ? '/staff' : '/' }
                 >
-                    Argentina
+                    Argentina Qatar 2022
                 </Link>
 
                 <div className="navbar-collapse">

@@ -35,12 +35,14 @@ export const TeamMemberPage = () => {
             
                     <div className="d-flex justify-content-around">
                         <button 
+                            className="btn btn-outline-primary"
                             onClick = { () => handleNavigate( member.role ) }>
-                                Go to { member.role } 
+                                Go to { member.role === 'player' ? 'players' : 'staff' }
                             </button>
                         <button 
+                            className="btn btn-outline-primary"
                             onClick = { () => handleNavigate( member.role === 'player' ? 'staff' : 'player') }>
-                                Go to { member.role === 'player' ? 'staff' : 'player' } 
+                                Go to { member.role === 'player' ? 'staff' : 'players' } 
                         </button>
                     </div>
 
