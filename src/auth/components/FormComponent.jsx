@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { getFormByType } from "../helpers"
+import { useForm } from "../../hooks/useForm";
 
 
 export const FormComponent = ({ type }) => {
 
     const navigate = useNavigate();
+    const { handleInputChange } = useForm();
 
     const formElements = getFormByType( type );
     const { type: formType, inputs } = formElements ? formElements : [];
+
+
 
     const handleSubmit = ( e, formType ) => {
         e.preventDefault();
@@ -32,6 +36,7 @@ export const FormComponent = ({ type }) => {
                             name = { input.name }
                             id   = { input.name }
                             className={ input.type !== 'checkbox' ? 'form-control mb-1' : 'form-check-input mx-2'}
+                            onChange={ handleInputChange }
                             />
                         </div>
                     ))
