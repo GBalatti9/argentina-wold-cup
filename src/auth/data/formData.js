@@ -8,5 +8,13 @@ export const formData = [
             { type: 'password', name: 'password', label: 'Password' },
             { type: 'password', name: 'checkPassword', label: 'Confirm Password' },
         ]
+    },
+    {
+        "type": "login",
+        "inputs": [
+            { type: 'email',    name: 'email',    label: 'Email' },
+            { type: 'password', name: 'password', label: 'Password' },
+            { type: 'checkbox', name: 'remember', label: 'Mantener sesión iniciada' },
+        ]
     }
 ]
