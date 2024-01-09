@@ -1,3 +1,4 @@
+import { PlayersFilteredProvider } from "../../context"
 import { PlayersAndStaffList } from "../components/PlayersAndStaffList"
 
 
@@ -6,7 +7,9 @@ export const StaffPage = () => {
         <>
             <h1>Staff</h1>
             <hr />
-            <PlayersAndStaffList role={ 'staff' } />
+            <PlayersFilteredProvider>
+                <PlayersAndStaffList role={ 'staff' } />
+            </PlayersFilteredProvider>
         </>
     )
 }

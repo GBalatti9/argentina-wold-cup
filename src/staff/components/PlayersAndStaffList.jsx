@@ -1,12 +1,15 @@
 
+import { useContext } from "react";
 import { getMemberByRole } from "../helpers";
 import { PlayersAndStaffCard } from "./PlayersAndStaffCard";
+import { PlayersFilteredContext } from "../../context";
 
 
 export const PlayersAndStaffList = ({ role }) => {
 
-    const members = getMemberByRole( role );
-
+    const { applyFilter, filter } = useContext( PlayersFilteredContext );
+    const members = applyFilter( filter, role );
+    
     return (
         <div className="row rows-cols-1 row-cols-md-3 g-1">
             {

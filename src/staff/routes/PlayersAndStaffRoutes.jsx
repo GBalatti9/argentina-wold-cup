@@ -11,8 +11,8 @@ export const PlayersAndStaffRoutes = () => {
             
             <div className="container">
                 <Routes>
-                    <Route path="players" element={ <PlayersPage /> } />
-                    <Route path="staff" element={ <StaffPage /> } />
+                    <Route path="players" element = { <PlayersPage /> } />
+                    <Route path="staff" element   = { <StaffPage /> } />
 
                     <Route path="search" element={ <SearchPage/> } />
                     
