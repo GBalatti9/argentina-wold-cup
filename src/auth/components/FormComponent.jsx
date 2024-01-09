@@ -1,19 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import { getFormByType } from "../helpers"
+import { useContext } from "react";
 import { useForm } from "../../hooks/useForm";
+
+import { getFormByType } from "../helpers";
+import { AuthContext } from "../context/AuthContext";
 
 
 export const FormComponent = ({ type }) => {
 
+    const { login } = useContext(AuthContext);
+
     const navigate = useNavigate();
-    const { handleInputChange } = useForm();
+    const { formState, handleInputChange } = useForm();
 
     const formElements = getFormByType( type );
     const { type: formType, inputs } = formElements ? formElements : [];
 
-
     const handleSubmit = ( e, formType ) => {
         e.preventDefault();
+        login( formState );
 
         if (formType === 'register') navigate('/login');
         if (formType === 'login') navigate('/');
