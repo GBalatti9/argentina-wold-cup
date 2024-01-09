@@ -1,6 +1,7 @@
-import { useContext, useState } from "react"
-import { staff } from "../../staff/data/staff";
+import { useContext } from "react"
 import { PlayersFilteredContext } from "../../context";
+
+
 
 export const FilterNavbar = () => {
     
@@ -33,7 +34,7 @@ export const FilterNavbar = () => {
                     <li 
                         className = {`cursor-pointer list-group-item col ${ filter === 'None' ? 'active' : '' }`}
                         onClick   = { () => handleFilter('None') }>
-                            No filter
+                            All
                     </li>
                 </ul>
             </nav>
