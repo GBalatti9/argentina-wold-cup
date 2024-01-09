@@ -15,7 +15,6 @@ const init = () => {
 export const AuthProvider = ({ children }) => {
 
     const [ authState, dispatch ] = useReducer( authReducer, {}, init );
-    console.log({authState});
 
     const login = ( loginState ) => {
         if ( Object.keys(loginState).length === 0) return;

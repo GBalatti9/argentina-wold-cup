@@ -21,7 +21,10 @@ export const FormComponent = ({ type }) => {
         login( formState );
 
         if (formType === 'register') navigate('/login');
-        if (formType === 'login') navigate('/');
+        if (formType === 'login') {
+            const lastPathVisited = localStorage.getItem('lastPath') || '/';
+            return navigate(lastPathVisited);
+        };
     }
 
     return (
