@@ -19,7 +19,7 @@ export const TeamMemberPage = () => {
             <div className="col-4">
                 <img 
                     src={`/assets/seleccion-argentina/${ id }.jpg`} 
-                    alt={ `${member.name}  ${member.lastName}` }
+                    alt={ `${member.name} ${member.lastName}` }
                     className="img-thumbnail" />
             </div>
             <div className="col-8">

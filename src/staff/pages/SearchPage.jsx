@@ -1,21 +1,29 @@
-import { useLocation, useNavigate } from "react-router-dom"
-import { useForm } from "../../hooks/useForm"
+import queryString from 'query-string';
+import { useLocation, useNavigate } from "react-router-dom";
+
+import { useForm } from "../../hooks/useForm";
+import { getMemberByName } from '../helpers';
+import { PlayersAndStaffCard } from '../components/PlayersAndStaffCard';
 
 
 export const SearchPage = () => {
 
-    console.log(useLocation());
     const navigate = useNavigate();
+    const { search } = useLocation();
+
+    const { q = '' } = queryString.parse(search);
+
+    const members = getMemberByName(q);
 
     const { searchText, handleInputChange } = useForm({
-        searchText: '',
+        searchText: q,
     })
 
     const handleSumit = ( e ) => {
         e.preventDefault();
         console.log({searchText});
 
-        navigate(`?=${ searchText }`);
+        navigate(`?q=${ searchText }`);
         
     }
 
@@ -42,6 +50,16 @@ export const SearchPage = () => {
                             Search
                         </button>
                     </form>
+                </div>
+                <div className="col-7">
+                        <h4>Results</h4>
+                        <hr />
+
+                        {
+                            members.map(( member ) => (
+                                <PlayersAndStaffCard key={ member.id } { ...member }/>
+                            ))
+                        }
                 </div>
             </div>
         </>
