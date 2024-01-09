@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { PlayersFilteredContext } from "../../context";
 
-
+import './FilterNavBar.css';
 
 export const FilterNavbar = () => {
     

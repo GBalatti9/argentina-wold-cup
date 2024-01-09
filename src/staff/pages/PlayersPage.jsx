@@ -10,7 +10,7 @@ export const PlayersPage = () => {
             <hr />
             <PlayersFilteredProvider>
                 <FilterNavbar />
-                <PlayersAndStaffList role={ 'player' } />
+                <PlayersAndStaffList role={ 'Player' } />
             </PlayersFilteredProvider>
         </>
     )

@@ -8,7 +8,7 @@ export const StaffPage = () => {
             <h1>Staff</h1>
             <hr />
             <PlayersFilteredProvider>
-                <PlayersAndStaffList role={ 'staff' } />
+                <PlayersAndStaffList role={ 'Staff' } />
             </PlayersFilteredProvider>
         </>
     )
