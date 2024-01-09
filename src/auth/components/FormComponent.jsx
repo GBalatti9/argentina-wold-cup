@@ -12,7 +12,6 @@ export const FormComponent = ({ type }) => {
     const { type: formType, inputs } = formElements ? formElements : [];
 
 
-
     const handleSubmit = ( e, formType ) => {
         e.preventDefault();
 
