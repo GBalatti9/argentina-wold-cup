@@ -4,10 +4,10 @@ import { getFormByType } from "../helpers"
 
 export const FormComponent = ({ type }) => {
 
+    const navigate = useNavigate();
+
     const formElements = getFormByType( type );
     const { type: formType, inputs } = formElements ? formElements : [];
-
-    const navigate = useNavigate();
 
     const handleSubmit = ( e, formType ) => {
         e.preventDefault();
@@ -17,12 +17,12 @@ export const FormComponent = ({ type }) => {
     }
 
     return (
-        <div className="card col-4 mx-auto mt-4 container bg-light">
+        <div className="card col-sm-12 col-md-5 mx-auto mt-4 container bg-light">
             <h2 className="text-center pt-3"> 
                 { formType === 'register' ? 'Register' : 'Login' }
             </h2>
             <hr />
-            <form className="d-flex flex-column" onSubmit={( e ) => handleSubmit(e, formType) }>
+            <form className="d-flex flex-column" onSubmit={( e ) => handleSubmit( e, formType ) }>
                 {
                     inputs.map(( input ) => (
                         <div key={ input.name + formType }>
