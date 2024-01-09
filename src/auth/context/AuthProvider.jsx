@@ -26,8 +26,14 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem( 'user', JSON.stringify(user.email) )
     }
 
+    const logout = () => {
+        localStorage.removeItem('user');
+        const action = { type: actions.logout };
+        dispatch( action )
+    }
+
     return (
-        <AuthContext.Provider value={{ login, authState }}>
+        <AuthContext.Provider value={{ login, authState, logout }}>
             { children }
         </AuthContext.Provider>
     )
