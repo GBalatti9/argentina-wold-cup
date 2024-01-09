@@ -1,7 +1,11 @@
+import { useLocation, useNavigate } from "react-router-dom"
 import { useForm } from "../../hooks/useForm"
 
 
 export const SearchPage = () => {
+
+    console.log(useLocation());
+    const navigate = useNavigate();
 
     const { searchText, handleInputChange } = useForm({
         searchText: '',
@@ -10,6 +14,9 @@ export const SearchPage = () => {
     const handleSumit = ( e ) => {
         e.preventDefault();
         console.log({searchText});
+
+        navigate(`?=${ searchText }`);
+        
     }
 
     return (
