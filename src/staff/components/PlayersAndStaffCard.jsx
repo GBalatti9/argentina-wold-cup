@@ -15,7 +15,7 @@ export const PlayersAndStaffCard = ({
     const { pathname } = useLocation(); 
     return (
         <>
-            <div className="card">
+            <div className="card animate__animated animate__fadeIn">
                 <div className="row no-gutters" style={{ height: '100%' }}>
                     <div className="col-4">
                         <img src={ imageTeamMember } className="card-img" alt={ `${ name } ${ lastName }` } style={{ height: '100%', width: '100%', objectFit: 'cover' }} />
