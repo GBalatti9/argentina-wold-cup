@@ -1,7 +1,10 @@
+import { FormComponent } from "../components"
 
 
 export const RegisterPage = () => {
     return (
-        <div>RegisterPage</div>
+        <>
+            <FormComponent type = { 'register' } />
+        </>
     )
 }
