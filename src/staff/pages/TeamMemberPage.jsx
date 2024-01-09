@@ -1,17 +1,20 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { getMemberById } from "../helpers/getMemberById";
+import { getAge } from "../helpers";
 
 
 export const TeamMemberPage = () => {
 
     const { id } = useParams();
     const member = getMemberById( id );
+    const age = getAge( member.birthdate );
     
     const navigate = useNavigate();
 
     const handleNavigate = ( role ) => {
-        if (role === 'player') navigate( '/players' );
-        if (role === 'staff')  navigate( '/staff' );
+        console.log(role);
+        if (role === 'Player') navigate( '/players' );
+        if (role === 'Staff')  navigate( '/staff' );
     }
 
     return (
@@ -25,6 +28,7 @@ export const TeamMemberPage = () => {
             <div className="col-8">
                 <h3>{ `${member.name}  ${member.lastName}` }</h3>
                 <ul className="list-group list-group-flush">
+                        <li className="list-group-item"> <b> Age: </b> { age } </li>
                         <li className="list-group-item"> <b> Role: </b> { member.role } </li>
                         <li className="list-group-item"> 
                             { member.team 
@@ -37,12 +41,12 @@ export const TeamMemberPage = () => {
                         <button 
                             className="btn btn-outline-primary"
                             onClick = { () => handleNavigate( member.role ) }>
-                                Go to { member.role === 'player' ? 'players' : 'staff' }
+                                Go to { member.role === 'Player' ? 'players' : 'staff' }
                             </button>
                         <button 
                             className="btn btn-outline-primary"
-                            onClick = { () => handleNavigate( member.role === 'player' ? 'staff' : 'player') }>
-                                Go to { member.role === 'player' ? 'staff' : 'players' } 
+                            onClick = { () => handleNavigate( member.role === 'Player' ? 'Staff' : 'Player') }>
+                                Go to { member.role === 'Player' ? 'staff' : 'players' } 
                         </button>
                     </div>
 
