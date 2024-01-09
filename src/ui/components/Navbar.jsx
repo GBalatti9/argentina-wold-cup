@@ -1,8 +1,14 @@
 import React from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 export const Navbar = () => {
     const { pathname } = useLocation();
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        navigate('/login');
+    }
 
     return (
         <>
@@ -41,7 +47,7 @@ export const Navbar = () => {
                     <span className="nav-item nav-link text-primary">
                         Gaston
                     </span>
-                    <button className='nav-item nav-link btn'>Logout</button>
+                    <button className='nav-item nav-link btn' onClick={ handleLogout }>Logout</button>
                 </ul>
                 </div>
             </nav>
