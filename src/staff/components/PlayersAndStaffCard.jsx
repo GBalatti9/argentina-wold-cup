@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 export const PlayersAndStaffCard = ({
@@ -11,6 +11,8 @@ export const PlayersAndStaffCard = ({
 }) => {
 
     const imageTeamMember = `/assets/seleccion-argentina/${ id }.jpg`;
+
+    const { pathname } = useLocation(); 
     return (
         <>
             <div className="card">
@@ -24,6 +26,9 @@ export const PlayersAndStaffCard = ({
                             (team !== '') && <p className="card-text"> <span className="fw-bold"> Team: </span> { team }</p>
                         }
                         <p className="card-text"> <span className="fw-bold"> Position: </span> { position }</p>
+                        {
+                            pathname.includes('search') && <p className="card-text"> <span className="fw-bold"> Role: </span> { role }</p>
+                        }
                         
                     <Link to={`/${role}/${id}`} >
                         More info...
