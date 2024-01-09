@@ -9,16 +9,18 @@ export const PlayersAndStaffRoutes = () => {
         <>
             <Navbar />
             
-            <Routes>
-                <Route path="players" element={ <PlayersPage /> } />
-                <Route path="staff" element={ <StaffPage /> } />
+            <div className="container">
+                <Routes>
+                    <Route path="players" element={ <PlayersPage /> } />
+                    <Route path="staff" element={ <StaffPage /> } />
 
-                <Route path="search" element={ <SearchPage/> } />
-                
-                <Route path="/:roleMember/:id" element={ <TeamMemberPage /> } />
+                    <Route path="search" element={ <SearchPage/> } />
+                    
+                    <Route path="/:roleMember/:id" element={ <TeamMemberPage /> } />
 
-                <Route path="/" element={ <Navigate to='/players' /> } />
-            </Routes>
+                    <Route path="/" element={ <Navigate to='/players' /> } />
+                </Routes>
+            </div>
         </>
     )
 }

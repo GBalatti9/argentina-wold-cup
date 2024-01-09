@@ -12,8 +12,12 @@ export const SearchPage = () => {
     const { search } = useLocation();
 
     const { q = '' } = queryString.parse(search);
+    console.log({q});
 
     const members = getMemberByName(q);
+
+    const showSearchMessage = q.length === 0;
+    const showErrorMessage = (q.length > 0) && ( members.length === 0 );
 
     const { searchText, handleInputChange } = useForm({
         searchText: q,
@@ -21,7 +25,6 @@ export const SearchPage = () => {
 
     const handleSumit = ( e ) => {
         e.preventDefault();
-        console.log({searchText});
 
         navigate(`?q=${ searchText }`);
         
@@ -54,6 +57,20 @@ export const SearchPage = () => {
                 <div className="col-7">
                         <h4>Results</h4>
                         <hr />
+
+                        {
+                            showSearchMessage && 
+                                <div className="alert alert-primary animate__animated animate__fadeIn"> 
+                                    Search a member of argentina's team 
+                                </div> 
+                        }
+
+                        {
+                            showErrorMessage 
+                            && <div className="alert alert-danger animate__animated animate__fadeIn"> 
+                                    No member was found
+                                </div>
+                        }
 
                         {
                             members.map(( member ) => (
