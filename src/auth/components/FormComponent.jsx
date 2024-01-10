@@ -1,18 +1,18 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 
-import { getFormByType } from "../helpers";
 import { AuthContext } from "../context/AuthContext";
-import { validateInputs }  from "../helpers"
+import { getFormByType, validateInputs, setInputsColor, checkErrors }  from "../helpers"
 
 
 export const FormComponent = ({ type }) => {
 
     const { login } = useContext(AuthContext);
 
-    const [ isValid, setIsValid ] = useState({});
+    const [ validation, setValidation ] = useState({});    
     const [ touched, setTouched ] = useState({});
+    const [ disabled, setDisabled] = useState(true);
 
     const { isEmail, isPassword, comparePasswords } = validateInputs();
     const navigate = useNavigate();
@@ -20,36 +20,62 @@ export const FormComponent = ({ type }) => {
     
     const formElements = getFormByType( type );
     const { type: formType, inputs } = formElements ? formElements : [];
+    const inputsRefs = inputs.map(() => useRef()); 
+    const { isOkColor, hasErrorColor } = setInputsColor();
 
-    const handleInputValidate = ( e ) => {
+
+    const handleInputValidate = ( e, ref ) => {
         const { name, value } = e.target;
         const isValidField = value.trim().length > 0;
-        setTouched((prev) => ({ ...prev, [name]: true }));
-        
-        if( isValidField ) {
-            if ( name === 'firstName') setIsValid(( prev ) => ({ ...prev, [name]: isValidField }));
-            if ( name === 'lastName') setIsValid(( prev ) => ({ ...prev, [name]: isValidField }));
 
-            if ( name === 'email' ) {
+        setTouched((prev) => ({ ...prev, [name]: true }));
+
+        if (isValidField) {
+            if (name === 'email') {
                 const checkEmail = isEmail(value);
-                setIsValid(( prev ) => ({ ...prev, [name]: checkEmail }))
+                    if ( checkEmail ) {
+                        isOkColor(ref);
+                    } else {
+                        hasErrorColor(ref);
+                    }
+                setValidation((prev) => ({ ...prev, [name]: checkEmail }));
+
+        } else if (name === 'password') {
+            const checkPassword = isPassword(value);
+            if ( checkPassword ) {
+                isOkColor(ref);
+                } else {
+                hasErrorColor(ref);
             }
-            if ( name === 'password' ) {
-                const checkPassword = isPassword(value);
-                setIsValid(( prev ) => ({ ...prev, [name]: checkPassword }))
+
+            setValidation((prev) => ({ ...prev, [name]: checkPassword }));
+        } else if (name === 'checkPassword') {
+            const passwordValue = formState['password'];
+            const checkPasswordValue = value;
+            const passwordMatch = comparePasswords(passwordValue, checkPasswordValue);
+            if ( passwordMatch ) {
+                isOkColor(ref);
+                } else {
+                hasErrorColor(ref);
             }
-            if ( name === 'checkPassword' ) {
-                const passwordValue = formState['password'];
-                const checkPasswordValue = value;
-                const passwordMatch = comparePasswords( passwordValue, checkPasswordValue );
-                setIsValid(( prev ) => ({ ...prev, [name]: passwordMatch }))
-            }
-            
-        } 
-    }
+            setValidation((prev) => ({ ...prev, [name]: passwordMatch }));
+        } else {
+            isOkColor(ref)
+            setValidation((prev) => ({ ...prev, [name]: isValidField }));
+        }
+        } else {
+            setValidation((prev) => ({ ...prev, [name]: false }));
+            hasErrorColor(ref)
+        }
+
+        !checkErrors(inputsRefs) ? setDisabled(false) : setDisabled(true);
+
+    };
+
 
     const handleSubmit = ( e, formType ) => {
         e.preventDefault();
+        console.log({ validation });
         login( formState );
 
         if (formType === 'register') navigate('/login');
@@ -68,30 +94,34 @@ export const FormComponent = ({ type }) => {
             <form className="d-flex flex-column" onSubmit={( e ) => handleSubmit( e, formType ) }>
                 {
                     inputs.map(( input, i ) => (
-                        <div key={ input.name + formType }>
+                        <div key={ input.name + formType } >
                         <label className="form-label" htmlFor={ input.name }>{ input.label }</label>
                         <input
                             type = { input.type }
                             name = { input.name }
                             id   = { input.name }
+                            ref = { inputsRefs[i] }
                             className={`form-control mb-1 ${
-                                touched[input.name] && isValid[input.name]
-                                    ? "border border-success"
-                                    : touched[input.name]
-                                    ? "border border-danger"
-                                    : ""
-                                        }`}
+                                input.type !== 'checkbox' ?  ''
+                                // touched[input.name] 
+                                //     && (validation[input.name] !== undefined ? validation[input.name] : true)
+                                //         ? "border border-success"
+                                //         : touched[input.name]
+                                //         ? "border border-danger"
+                                //         : ""
+                                : 'form-check-input'
+                            }`}
                             onChange  = {
                                 ( e ) => {
                                         handleInputChange( e )
-                                        handleInputValidate( e ) 
+                                        handleInputValidate( e, inputsRefs[i] ) 
                                     }
                                 }
                             />
                         </div>
                     ))
                 }
-                <button type = 'submit' className = "btn btn-primary mt-3 mb-3 align-self-center px-4"> 
+                <button type = 'submit' className = {`btn btn-primary mt-3 mb-3 align-self-center px-4 ${ disabled ? 'disabled' : '' } `} > 
                     { formType === 'register' ? 'Register' : 'Login' }
                 </button>
 
