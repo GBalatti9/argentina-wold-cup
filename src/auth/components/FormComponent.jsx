@@ -78,7 +78,10 @@ export const FormComponent = ({ type }) => {
         console.log({ validation });
         login( formState );
 
-        if (formType === 'register') navigate('/login');
+        if (formType === 'register') {
+            return navigate('/login');
+        }
+
         if (formType === 'login') {
             const lastPathVisited = localStorage.getItem('lastPath') || '/';
             return navigate(lastPathVisited);
