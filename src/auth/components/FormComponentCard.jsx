@@ -1,5 +1,5 @@
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState, useRef, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 
@@ -88,9 +88,16 @@ export const FormComponentCard = ({ type }) => {
                         </div>
                     ))
                 }
-                <button type = 'submit' className = {`btn btn-primary mt-3 mb-3 align-self-center px-4 ${ disabled ? 'disabled' : '' } `} > 
+                <button type = 'submit' className = {`btn btn-primary mt-3 align-self-center px-4 ${ disabled ? 'disabled' : '' } `} > 
                     { formType === 'register' ? 'Register' : 'Login' }
                 </button>
+                <div className="text-center mt-2 mb-3">
+
+                { formType === 'register'
+                    ? <Link to='/login'>Login</Link>
+                    : <Link to='/register'>Register</Link>
+                }
+                </div>
                 {
                     errors.length > 0 && errors.map(( error, i ) => (
                         <p key={ error + i }>{ error }</p>
