@@ -5,7 +5,7 @@ import { useForm } from "../../hooks/useForm";
 
 import { AuthContext } from "../context/AuthContext";
 
-import { getFormByType, checkErrors, handleInputsValidation }  from "../helpers";
+import { getFormByType, checkErrors, handleInputsValidation, fetchApi }  from "../helpers";
 
 export const FormComponentCard = ({ type }) => {
 
@@ -14,6 +14,8 @@ export const FormComponentCard = ({ type }) => {
     const { login } = useContext(AuthContext);
 
     const [ disabled, setDisabled ] = useState(true);
+    const [ formSent, setFormSent ] = useState(false);
+    const [ errors, setErrors ]     = useState([])
 
     const navigate = useNavigate();
     const { formState, handleInputChange } = useForm();
@@ -21,33 +23,48 @@ export const FormComponentCard = ({ type }) => {
     const { type: formType, inputs } = formElements ? formElements : [];
     const inputsRefs = inputs.map(() => useRef()); 
 
+    
     const handleInputValidate = ( e, ref ) => {
         const { name, value } = e.target;
         handleInputsValidation( name, value, ref, formState );
         !checkErrors(inputsRefs) ? setDisabled(false) : setDisabled(true);
     };
-
-    const handleSubmit = ( e, formType ) => {
+    
+    const handleSubmit = async ( e, formType ) => {
         e.preventDefault();
+        // console.log({ formSent });
         
         if (formType === 'register') {
-            console.log(formState);
-            return navigate('/login');
+            try {                
+                console.log('estoy aca');
+                const sendData = await fetchApi( formType, formState );
+
+                if(sendData.errors.length === 0) {
+                    return navigate('/login');
+                } else {
+                    setErrors(sendData.errors)
+                }
+
+            } catch (error) {
+                console.log(error);
+            }
         }
         
         if (formType === 'login') {
             const lastPathVisited = localStorage.getItem('lastPath') || '/';
             login( formState );
+            setFormSent(true);
             return navigate(lastPathVisited);
         };
     }
+
     return (
         <>
         <h2 className="text-center pt-3"> 
                 { formType === 'register' ? 'Register' : 'Login' }
             </h2>
             <hr />
-            <form className="d-flex flex-column" onSubmit={( e ) => handleSubmit( e, formType ) }>
+            <form className="d-flex flex-column" onSubmit={( e ) => { handleSubmit( e, formType )} }>
                 {
                     inputs.map(( input, i ) => (
                         <div key={ input.name + formType } >
@@ -74,7 +91,11 @@ export const FormComponentCard = ({ type }) => {
                 <button type = 'submit' className = {`btn btn-primary mt-3 mb-3 align-self-center px-4 ${ disabled ? 'disabled' : '' } `} > 
                     { formType === 'register' ? 'Register' : 'Login' }
                 </button>
-
+                {
+                    errors.length > 0 && errors.map(( error, i ) => (
+                        <p key={ error + i }>{ error }</p>
+                    ))
+                }
             </form>
         </>
     )

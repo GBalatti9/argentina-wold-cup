@@ -9,7 +9,7 @@ export const validateInputs = () => {
 
     const isPassword = ( value ) => {
         const lengthGraterThan8 = value.length >= 8;
-        const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]+$/;
         const conditions = passwordRegex.test(value);
         
         return lengthGraterThan8 && conditions;
