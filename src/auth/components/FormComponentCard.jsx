@@ -16,18 +16,29 @@ export const FormComponentCard = ({ type }) => {
     const [ disabled, setDisabled ] = useState(true);
     const [ formSent, setFormSent ] = useState(false);
     const [ errors, setErrors ]     = useState([])
+    const [ filteredInputsRefs, setFilteredInputsRefs ] = useState([])
 
     const navigate = useNavigate();
     const { formState, handleInputChange } = useForm();
     
     const { type: formType, inputs } = formElements ? formElements : [];
-    const inputsRefs = inputs.map(() => useRef()); 
-
+    let inputsRefs = inputs.map(() => useRef())
+    useEffect(() => {
+        const filteredRefs = inputsRefs.filter((ref) => {
+            return !ref.current.classList.contains('form-check-input');
+        });
+    
+        setFilteredInputsRefs([...filteredRefs]);
+    
+        return () => {};
+    }, []);
+    console.log(filteredInputsRefs);
+    // const filterInputs = inputsRefs.filter(( input ) => input.current.classList.contains('form-check-input'));
     
     const handleInputValidate = ( e, ref ) => {
         const { name, value } = e.target;
         handleInputsValidation( name, value, ref, formState );
-        !checkErrors(inputsRefs) ? setDisabled(false) : setDisabled(true);
+        !checkErrors(filteredInputsRefs) ? setDisabled(false) : setDisabled(true);
     };
     
     const handleSubmit = async ( e, formType ) => {
