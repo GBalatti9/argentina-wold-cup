@@ -32,8 +32,6 @@ export const FormComponentCard = ({ type }) => {
     
         return () => {};
     }, []);
-    console.log(filteredInputsRefs);
-    // const filterInputs = inputsRefs.filter(( input ) => input.current.classList.contains('form-check-input'));
     
     const handleInputValidate = ( e, ref ) => {
         const { name, value } = e.target;
