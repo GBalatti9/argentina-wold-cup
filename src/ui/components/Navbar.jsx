@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../auth/context';
+import { fetchLogout } from '../helpers/fetchLogout';
 
 export const Navbar = () => {
     const { pathname } = useLocation();
@@ -10,6 +11,7 @@ export const Navbar = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
+        fetchLogout();
         logout();
         navigate('/login');
     }
