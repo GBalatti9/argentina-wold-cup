@@ -1,7 +1,8 @@
-import { useReducer } from "react"
+import { useContext, useReducer } from "react"
 import { AuthContext } from "./AuthContext"
 import { authReducer } from "./authReducer"
 import { actions } from "../actions/actions";
+import { UserInCookieContext } from "../../context";
 
 
 const init = () => {
@@ -13,6 +14,9 @@ const init = () => {
     }
 }
 export const AuthProvider = ({ children }) => {
+
+    const { userIsLogged } = useContext(UserInCookieContext);
+    console.log({ userIsLogged });
 
     const [ authState, dispatch ] = useReducer( authReducer, {}, init );
 
