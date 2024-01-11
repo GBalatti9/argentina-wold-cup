@@ -18,6 +18,7 @@ export const fetchApi = async ( type, formData ) => {
                 headers: {
                     'Content-type': 'application/json',
                 },
+                credentials: 'include',
                 body: JSON.stringify( formData )
             });
 
