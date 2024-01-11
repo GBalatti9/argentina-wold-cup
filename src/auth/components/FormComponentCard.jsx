@@ -36,7 +36,6 @@ export const FormComponentCard = ({ type }) => {
         
         if (formType === 'register') {
             try {                
-                console.log('estoy aca');
                 const sendData = await fetchApi( formType, formState );
 
                 if(sendData.errors.length === 0) {
@@ -46,15 +45,28 @@ export const FormComponentCard = ({ type }) => {
                 }
 
             } catch (error) {
-                console.log(error);
+                console.error(error);
             }
         }
         
         if (formType === 'login') {
-            const lastPathVisited = localStorage.getItem('lastPath') || '/';
-            login( formState );
-            setFormSent(true);
-            return navigate(lastPathVisited);
+            try {
+                const sendData = await fetchApi( formType, formState );
+
+                if (sendData.errors.length === 0) {
+                    
+                    const lastPathVisited = localStorage.getItem('lastPath') || '/';
+                    login( formState );
+                    setFormSent(true);
+                    return navigate(lastPathVisited);
+                } else {
+                    setErrors(sendData.errors);
+                    
+
+                }
+                } catch (error) {
+                console.error(error)
+            }
         };
     }
 
