@@ -55,6 +55,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const loadInitialState = async () => {
             const initialState = await init();
+            if (!initialState.logged) return;
             dispatch({ type: actions.init, payload: initialState })
         }
 
