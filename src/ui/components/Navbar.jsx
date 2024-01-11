@@ -6,7 +6,6 @@ import { fetchLogout } from '../helpers/fetchLogout';
 export const Navbar = () => {
     const { pathname } = useLocation();
     const { authState, logout } = useContext(AuthContext);
-    
 
     const navigate = useNavigate();
 

@@ -22,7 +22,7 @@ export const authReducer = ( state, action ) => {
             return {
                 ...state,
                 logged: action.payload.logged,
-                user: action.payload.user.first_name,
+                user: action.payload.user,
             }
         default:
             state;
