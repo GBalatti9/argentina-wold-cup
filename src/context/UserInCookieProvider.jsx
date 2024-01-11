@@ -32,6 +32,9 @@ export const UserInCookieProvider = ({ children }) => {
                 user: data,
                 logged: true,
             }))
+            const { first_name } = data.success;
+            console.log( first_name );
+            localStorage.setItem( 'user', JSON.stringify(first_name) )
         } catch (error) {
             console.error(error);
         }
@@ -40,6 +43,7 @@ export const UserInCookieProvider = ({ children }) => {
     useEffect(() => {
         fetchUserInfo();
     }, [])
+
 
     return (
         <UserInCookieContext.Provider value={{ userIsLogged }}>

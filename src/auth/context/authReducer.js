@@ -17,6 +17,13 @@ export const authReducer = ( state, action ) => {
                 ...state,
                 logged: false,
             }
+
+        case actions.init: 
+            return {
+                ...state,
+                logged: action.payload.logged,
+                user: action.payload.user.first_name,
+            }
         default:
             state;
     }
