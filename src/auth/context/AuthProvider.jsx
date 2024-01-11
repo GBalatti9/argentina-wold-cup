@@ -18,11 +18,11 @@ export const AuthProvider = ({ children }) => {
 
     const login = ( loginState ) => {
         if ( Object.keys(loginState).length === 0) return;
-        // Esto va a tener que verificar en la base de datos si existe un usuario con este mail y comparar la contraseña. En caso de que sea true y exita el usuario, directamente al reducer se le pasa el mail y no la contraseña
+
         const user = loginState;
-        const action = { type: actions.login, payload: user.email }
+        const action = { type: actions.login, payload: user.firstName }
         dispatch( action );
-        localStorage.setItem( 'user', JSON.stringify(user.email) )
+        localStorage.setItem( 'user', JSON.stringify(user.firstName) )
     }
 
     const logout = () => {

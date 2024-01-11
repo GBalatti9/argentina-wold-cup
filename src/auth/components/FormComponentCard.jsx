@@ -56,7 +56,8 @@ export const FormComponentCard = ({ type }) => {
                 if (sendData.errors.length === 0) {
                     
                     const lastPathVisited = localStorage.getItem('lastPath') || '/';
-                    login( formState );
+                    login( sendData.user );
+                    console.log({sendData});
                     setFormSent(true);
                     return navigate(lastPathVisited);
                 } else {
