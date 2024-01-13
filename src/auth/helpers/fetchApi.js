@@ -57,7 +57,10 @@ export const fetchApi = async ( type, formData = {} ) => {
     }
 
     try {
-        const response = await fetch(url, {
+        const newType = type.split(' ')[0];
+        const urlWithParams = `${url}/${newType}`
+
+        const response = await fetch(urlWithParams, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
