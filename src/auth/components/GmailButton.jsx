@@ -7,7 +7,11 @@ export const GmailButton = ({ type }) => {
     const handleSubmit = async ( e ) => {
         e.preventDefault();
         console.log('handlesubmit');
-        await fetchApi(`${ type } with gmail`);
+        const data = await fetchApi(`${ type } with gmail`);
+        // console.log(data.redirectUrl);
+        const redirectUrl = data ? data.redirectUrl : '';
+        console.log(redirectUrl);
+        window.open(redirectUrl, '_blank');
     }
 
     return (

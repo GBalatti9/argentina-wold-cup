@@ -57,13 +57,19 @@ export const fetchApi = async ( type, formData = {} ) => {
     }
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            credentials: 'include',
+        });
 
         if (!response.ok) {
             throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
-        console.log({ data });
+        return data;
     } catch (error) {
         console.error('Error al realizar la solicitud de Gmail:', error.message);
     }
