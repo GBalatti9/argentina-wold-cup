@@ -7,23 +7,38 @@ export const fetchApi = async ( type, formData = {} ) => {
 
     switch (type) {
         case 'register':
-            url = 'http://localhost:3000/register'
+            // url = 'http://localhost:3000/register'
+
+            // Production
+            url = 'https://signup-login-qaz1.onrender.com/register'
             break;
         
         case 'login':
-            url = 'http://localhost:3000/login'
+            // url = 'http://localhost:3000/login'
+
+            // Production
+            url = 'https://signup-login-qaz1.onrender.com/login'
             break;
         
         case 'register with gmail':
-            url = 'http://localhost:3000/auth/google'
+            // url = 'http://localhost:3000/auth/google'
+
+            // Production
+            url = 'https://signup-login-qaz1.onrender.com/auth/google'
             break;
 
         case 'login with gmail':
-            url = 'http://localhost:3000/auth/google'
+            // url = 'http://localhost:3000/auth/google'
+
+            // Production
+            url = 'https://signup-login-qaz1.onrender.com/auth/google'
             break;
 
         case 'forget':
-            url = 'http://localhost:3000/forgot-password'
+            // url = 'http://localhost:3000/forgot-password'
+
+            // Production
+            url = 'https://signup-login-qaz1.onrender.com/forgot-password'
             break;
     
         default:
