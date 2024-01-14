@@ -11,7 +11,7 @@ export const PlayersAndStaffList = ({ role }) => {
     const members = applyFilter( filter, role );
     
     return (
-        <div className="row rows-cols-1 row-cols-md-3 g-1">
+        <div className="row rows-cols-1 row-cols-md-3 g-1 mb-4">
             {
                 members.map(( member ) => (
                         <PlayersAndStaffCard 

@@ -116,15 +116,22 @@ export const FormComponentCard = ({ type }) => {
                 <div className="text-center mt-2 mb-3">
 
                 { formType === 'register'
-                    ? <Link to='/login'>Login</Link>
-                    : <Link to='/register'>Register</Link>
+                    ?
+                    <p>
+                    Already have an account?
+                    <Link to='/login' className="text-dark mx-2">Login</Link>
+                    </p>
+                    : <Link to='/register' className="text-dark"> Register </Link>
                 }
                 </div>
-                {
-                    errors.length > 0 && errors.map(( error, i ) => (
-                        <p key={ error + i }>{ error }</p>
-                    ))
-                }
+                <div className="text-center">
+
+                    {
+                        errors.length > 0 && errors.map(( error, i ) => (
+                            <p key={ error + i }>{ error }</p>
+                        ))
+                    }
+                </div>
             </form>
         </>
     )
