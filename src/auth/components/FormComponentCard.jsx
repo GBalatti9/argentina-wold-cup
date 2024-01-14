@@ -89,17 +89,36 @@ export const FormComponentCard = ({ type }) => {
             <form className="d-flex flex-column" onSubmit={( e ) => { handleSubmit( e, formType )} }>
                 {
                     inputs.map(( input, i ) => (
-                        <div key={ input.name + formType } >
-                        <label className="form-label" htmlFor={ input.name }>{ input.label }</label>
-                        <input
-                            type = { input.type }
-                            name = { input.name }
-                            id   = { input.name }
-                            ref = { inputsRefs[i] }
-                            className={`form-control mb-1 ${
-                                input.type !== 'checkbox' ?  ''
-                                : 'form-check-input'
-                            }`}
+                        input.label === 'Mantener sesión iniciada' 
+                        ? 
+                        <div key={ input.name + formType } className="position-relative w-auto">
+                            <label className="form-label" htmlFor={ input.name }>{ input.label }</label>
+
+                            <input
+                                type = { input.type }
+                                name = { input.name }
+                                id   = { input.name }
+                                ref = { inputsRefs[i] } 
+                                className="form-check-input mx-2"
+                                onChange={
+                                    ( e ) => {
+                                        handleInputChange( e )
+                                        handleInputValidate( e, inputsRefs[i] )
+                                    }
+                                }
+                            />
+                        </div>
+
+                        :
+                        <div key={ input.name + formType } className="position-relative w-auto">
+                            <label className="form-label" htmlFor={ input.name }>{ input.label }</label>
+                            <input
+                                type = { input.type }
+                                name = { input.name }
+                                id   = { input.name }
+                                ref = { inputsRefs[i] }
+                                
+                            className='form-control mb-1'
                             onChange  = {
                                 ( e ) => {
                                         handleInputChange( e )
