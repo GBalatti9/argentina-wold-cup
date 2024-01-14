@@ -78,6 +78,19 @@ export const FormComponentCard = ({ type }) => {
                 console.error(error)
             }
         };
+
+        if (formType === 'forget') {
+            try {
+                const data = await fetchApi( formType, formState );
+                
+                if (data.errors.length > 0) {
+                    setErrors( data.errors )
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
     }
 
     return (
@@ -126,23 +139,34 @@ export const FormComponentCard = ({ type }) => {
                                     }
                                 }
                             />
+                            {
+                                ((formType === 'register') && (input.name === 'checkPassword')) && 
+                                <span className="fst-italic">Password must contain upper and lowercase, number and special character</span>
+                            }
                         </div>
                     ))
                 }
                 <button type = 'submit' className = {`btn btn-primary mt-3 align-self-center px-4 ${ disabled ? 'disabled' : '' } `} > 
                     { formType === 'register' ? 'Register' : formType === 'login' ? 'Login' : 'Reset Password' }
                 </button>
-                <div className="text-center mt-2 mb-3">
+                <div className="text-center mt-2">
 
-                { formType === 'register'
-                    ?
-                    <p>
-                    Already have an account?
-                    <Link to='/login' className="text-dark mx-2">Login</Link>
-                    </p>
-                    : formType === 'login'
-                    ? <Link to='/register' className="text-dark"> Register </Link>
-                    : ''
+                    { formType === 'register'
+                        ?
+                        <p>
+                        Already have an account?
+                        <Link to='/login' className="text-dark mx-2">Login</Link>
+                        </p>
+                        : formType === 'login'
+                        ? <Link to='/register' className="text-dark"> Register </Link>
+                        : ''
+                    }
+                {
+                    formType === 'login' &&
+                    <>
+                    <br />
+                    <Link to='/forgetPassword' className="text-dark"> Reset Password </Link>
+                    </>
                 }
                 </div>
                 <div className="text-center">

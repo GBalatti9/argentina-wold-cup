@@ -21,9 +21,13 @@ export const fetchApi = async ( type, formData = {} ) => {
         case 'login with gmail':
             url = 'http://localhost:3000/auth/google'
             break;
+
+        case 'forget':
+            url = 'http://localhost:3000/forgot-password'
+            break;
     
         default:
-            url
+            return url
     }
 
     // const url = type === 'register' ? 'http://localhost:3000/register' : 'http://localhost:3000/login';
