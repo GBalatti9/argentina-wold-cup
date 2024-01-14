@@ -83,7 +83,7 @@ export const FormComponentCard = ({ type }) => {
     return (
         <>
         <h2 className="text-center pt-3"> 
-                { formType === 'register' ? 'Register' : 'Login' }
+                { formType === 'register' ? 'Register' : formType === 'login' ? 'Login' : 'Reset Password' }
             </h2>
             <hr />
             <form className="d-flex flex-column" onSubmit={( e ) => { handleSubmit( e, formType )} }>
@@ -130,7 +130,7 @@ export const FormComponentCard = ({ type }) => {
                     ))
                 }
                 <button type = 'submit' className = {`btn btn-primary mt-3 align-self-center px-4 ${ disabled ? 'disabled' : '' } `} > 
-                    { formType === 'register' ? 'Register' : 'Login' }
+                    { formType === 'register' ? 'Register' : formType === 'login' ? 'Login' : 'Reset Password' }
                 </button>
                 <div className="text-center mt-2 mb-3">
 
@@ -140,7 +140,9 @@ export const FormComponentCard = ({ type }) => {
                     Already have an account?
                     <Link to='/login' className="text-dark mx-2">Login</Link>
                     </p>
-                    : <Link to='/register' className="text-dark"> Register </Link>
+                    : formType === 'login'
+                    ? <Link to='/register' className="text-dark"> Register </Link>
+                    : ''
                 }
                 </div>
                 <div className="text-center">

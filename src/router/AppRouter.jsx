@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import { ForgetPassword, LoginPage, RegisterPage } from "../auth";
+import { ForgetPasswordPage, LoginPage, RegisterPage } from "../auth";
 import { PlayersAndStaffRoutes } from "../staff";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
@@ -24,7 +24,7 @@ export const AppRouter = () => {
 
                 <Route path="forgetPassword" element = {
                     <PublicRoute>
-                        <ForgetPassword />
+                        <ForgetPasswordPage />
                     </PublicRoute>
                 } />
 
