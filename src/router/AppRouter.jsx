@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import { LoginPage, RegisterPage } from "../auth";
+import { ForgetPassword, LoginPage, RegisterPage } from "../auth";
 import { PlayersAndStaffRoutes } from "../staff";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
@@ -21,6 +21,12 @@ export const AppRouter = () => {
                     </PublicRoute>
             
             } />
+
+                <Route path="forgetPassword" element = {
+                    <PublicRoute>
+                        <ForgetPassword />
+                    </PublicRoute>
+                } />
 
                 <Route path="*" element={
                     <PrivateRoute>
