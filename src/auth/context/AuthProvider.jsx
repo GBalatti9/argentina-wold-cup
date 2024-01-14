@@ -14,8 +14,9 @@ const init = async () => {
         }
     }
 
+    // http://localhost:3000/user
     try {
-        const response = await fetch('http://localhost:3000/user', {
+        const response = await fetch('https://signup-login-qaz1.onrender.com/user', {
             credentials: 'include'
         });
 

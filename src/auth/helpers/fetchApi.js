@@ -54,7 +54,7 @@ export const fetchApi = async ( type, formData = {} ) => {
         }
     }
 
-    if (url !== 'http://localhost:3000/auth/google') {
+    if (url !== 'https://signup-login-qaz1.onrender.com/auth/google') {
         try {
             const response = await fetch(url, {
                 method: 'POST',
