@@ -13,7 +13,7 @@ export const PlayersAndStaffCard = ({
     // const imageTeamMember = `../../assets/seleccionArgentina/${ id }.jpg`;
 
     // Production
-    const imageTeamMember = `/seleccionArgentina/${id}.jpg`;
+    const imageTeamMember = `assets/seleccionArgentina/${id}.jpg`;
     // const teamMemberImage = teamMemberImages(`./${id}.jpg`);
 
     const { pathname } = useLocation(); 

@@ -1,7 +1,7 @@
 import { fetchApi } from '../helpers';
 // import gmailIcon from '/gmail/gmail.png';
 
-const gmailIcon = '/gmail/gmail.png';
+const gmailIcon = 'assets/gmail/gmail.png';
 export const GmailButton = ({ type }) => {
     const typeToUse = type.charAt(0).toUpperCase() + type.slice(1);
 
