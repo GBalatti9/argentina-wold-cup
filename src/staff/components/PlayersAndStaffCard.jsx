@@ -13,8 +13,8 @@ export const PlayersAndStaffCard = ({
     // const imageTeamMember = `../../assets/seleccionArgentina/${ id }.jpg`;
 
     // Production
-    // const imageTeamMember = `/seleccionArgentina/${id}.jpg`;
-    const teamMemberImage = teamMemberImages(`./${id}.jpg`);
+    const imageTeamMember = `/seleccionArgentina/${id}.jpg`;
+    // const teamMemberImage = teamMemberImages(`./${id}.jpg`);
 
     const { pathname } = useLocation(); 
     return (
@@ -22,7 +22,7 @@ export const PlayersAndStaffCard = ({
             <div className="card animate__animated animate__fadeIn">
                 <div className="row no-gutters" style={{ height: '100%' }}>
                     <div className="col-4">
-                        <img src={ teamMemberImage } className="card-img" alt={ `${ name } ${ lastName }` } style={{ height: '100%', width: '100%', objectFit: 'cover' }} />
+                        <img src={ imageTeamMember } className="card-img" alt={ `${ name } ${ lastName }` } style={{ height: '100%', width: '100%', objectFit: 'cover' }} />
                     </div>
                     <div className="col-8 card-body">
                         <h4 className="card-title">{ `${ name }  ${ lastName }` }</h4>
