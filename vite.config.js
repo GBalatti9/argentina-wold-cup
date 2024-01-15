@@ -19,7 +19,7 @@ export default defineConfig({
               this.emitFile({
                 type: 'asset',
                 fileName: asset,
-                source: require('fs').readFileSync(`src/assets/${asset}`),
+                source: `./src/assets/${asset}`,
               });
             }
           },
