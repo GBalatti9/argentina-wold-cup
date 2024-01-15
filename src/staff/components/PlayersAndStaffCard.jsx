@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-
+import teamMemberImages from '../../assets/seleccionArgentina/*.jpg';
 
 export const PlayersAndStaffCard = ({
     id,
@@ -14,7 +14,7 @@ export const PlayersAndStaffCard = ({
 
     // Production
     // const imageTeamMember = `/seleccionArgentina/${id}.jpg`;
-    const imageTeamMember = require.context('../../assets/seleccionArgentina', true);
+    const teamMemberImage = teamMemberImages(`./${id}.jpg`);
 
     const { pathname } = useLocation(); 
     return (
@@ -22,7 +22,7 @@ export const PlayersAndStaffCard = ({
             <div className="card animate__animated animate__fadeIn">
                 <div className="row no-gutters" style={{ height: '100%' }}>
                     <div className="col-4">
-                        <img src={ imageTeamMember(`./${ id }.jpg`) } className="card-img" alt={ `${ name } ${ lastName }` } style={{ height: '100%', width: '100%', objectFit: 'cover' }} />
+                        <img src={ teamMemberImage } className="card-img" alt={ `${ name } ${ lastName }` } style={{ height: '100%', width: '100%', objectFit: 'cover' }} />
                     </div>
                     <div className="col-8 card-body">
                         <h4 className="card-title">{ `${ name }  ${ lastName }` }</h4>
