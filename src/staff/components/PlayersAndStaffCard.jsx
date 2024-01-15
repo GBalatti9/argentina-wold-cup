@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import teamMemberImages from '../../assets/seleccionArgentina/*.jpg';
+import teamMemberImages from '../../seleccionArgentina/*.jpg';
 
 export const PlayersAndStaffCard = ({
     id,
