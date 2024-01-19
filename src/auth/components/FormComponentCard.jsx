@@ -138,7 +138,7 @@ export const FormComponentCard = ({ type }) => {
                                 id   = { input.name }
                                 ref = { inputsRefs[i] }
                                 
-                            className='form-control mb-1 position-relative border border-danger'
+                            className='form-control mb-1 position-relative'
                             onChange  = {
                                 ( e ) => {
                                         handleInputChange( e )
