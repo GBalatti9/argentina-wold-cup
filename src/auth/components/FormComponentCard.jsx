@@ -17,6 +17,7 @@ export const FormComponentCard = ({ type }) => {
     const [ formSent, setFormSent ] = useState(false);
     const [ errors, setErrors ]     = useState([])
     const [ filteredInputsRefs, setFilteredInputsRefs ] = useState([])
+    const [ imagePassword,  setImagePassword] = useState('hidden')
 
     const navigate = useNavigate();
     const { formState, handleInputChange } = useForm();
@@ -93,6 +94,11 @@ export const FormComponentCard = ({ type }) => {
 
     }
 
+    const handlePasswordSeen = ( url ) => {
+        if (url === 'eye') setImagePassword('hidden');
+        if (url === 'hidden') setImagePassword('eye');
+    }
+
     return (
         <>
         <h2 className="text-center pt-3"> 
@@ -112,7 +118,7 @@ export const FormComponentCard = ({ type }) => {
                                 name = { input.name }
                                 id   = { input.name }
                                 ref = { inputsRefs[i] } 
-                                className="form-check-input mx-2"
+                                className="form-check-input mx-2 position-relative"
                                 onChange={
                                     ( e ) => {
                                         handleInputChange( e )
@@ -125,8 +131,9 @@ export const FormComponentCard = ({ type }) => {
                         :
                         <div key={ input.name + formType } className="position-relative w-auto">
                             <label className="form-label" htmlFor={ input.name }>{ input.label }</label>
+                            
                             <input
-                                type = { input.type }
+                                type = { input.type === 'password' ? ( imagePassword === 'eye' ? 'text' : 'password' ) : input.type }
                                 name = { input.name }
                                 id   = { input.name }
                                 ref = { inputsRefs[i] }
@@ -139,6 +146,14 @@ export const FormComponentCard = ({ type }) => {
                                     }
                                 }
                             />
+                            {
+                                input.type === 'password' &&
+                                <>
+                                <div className="position-absolute top-50 end-0 mx-3"  onClick={ ()=> handlePasswordSeen( imagePassword )}>
+                                    <img src={`/${imagePassword}.png`} alt="" style={{ width: '25px' }} />
+                                </div>
+                                </>
+                            }
                             {
                                 ((formType === 'register') && (input.name === 'checkPassword')) && 
                                 <span className="fst-italic">Password must contain upper and lowercase, number and special character</span>
