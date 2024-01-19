@@ -1,0 +1,36 @@
+{
+    "rewrites": [
+        {
+            "source": "/login",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/register",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/forgetPassword",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/players/*",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/staff/*",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/search",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/:roleMember/:id",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/:path*",
+            "destination": "/index.html"
+        }
+    ]
+}
