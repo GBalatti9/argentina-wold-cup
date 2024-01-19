@@ -9,26 +9,26 @@ export const AppRouter = () => {
     return (
         <>
             <Routes>
-                <Route path="login" element = { 
+                <Route path="/login" element = { 
                 <PublicRoute>
                     <LoginPage /> 
                 </PublicRoute>
             
             } />
-                <Route path="register" element = { 
+                <Route path="/register" element = { 
                     <PublicRoute>
                         <RegisterPage />
                     </PublicRoute>
             
             } />
 
-                <Route path="forgetPassword" element = {
+                <Route path="/forgetPassword" element = {
                     <PublicRoute>
                         <ForgetPasswordPage />
                     </PublicRoute>
                 } />
 
-                <Route path="*" element={
+                <Route path="/*" element={
                     <PrivateRoute>
                         <PlayersAndStaffRoutes />
                     </PrivateRoute>
