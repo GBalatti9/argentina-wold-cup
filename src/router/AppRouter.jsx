@@ -9,6 +9,8 @@ export const AppRouter = () => {
     return (
         <>
             <Routes>
+                <Route element = { <Navigate to="/login" replace /> } />
+
                 <Route path="/login" element={
                     <PublicRoute>
                         <LoginPage />
@@ -33,12 +35,6 @@ export const AppRouter = () => {
                         <PlayersAndStaffRoutes />
                     </PrivateRoute>
                 } />
-
-                <Route
-                    element = {
-                        <Navigate to="/login" replace />
-                    }
-                />
             </Routes>
         </>
     )
