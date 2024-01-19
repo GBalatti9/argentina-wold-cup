@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { ForgetPasswordPage, LoginPage, RegisterPage } from "../auth";
 import { PlayersAndStaffRoutes } from "../staff";
