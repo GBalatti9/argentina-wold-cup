@@ -131,14 +131,14 @@ export const FormComponentCard = ({ type }) => {
                         :
                         <div key={ input.name + formType } className="position-relative w-auto">
                             <label className="form-label" htmlFor={ input.name }>{ input.label }</label>
-                            
+                            <div className="position-relative">
                             <input
                                 type = { input.type === 'password' ? ( imagePassword === 'eye' ? 'text' : 'password' ) : input.type }
                                 name = { input.name }
                                 id   = { input.name }
                                 ref = { inputsRefs[i] }
                                 
-                            className='form-control mb-1'
+                            className='form-control mb-1 position-relative border border-danger'
                             onChange  = {
                                 ( e ) => {
                                         handleInputChange( e )
@@ -149,11 +149,12 @@ export const FormComponentCard = ({ type }) => {
                             {
                                 input.type === 'password' &&
                                 <>
-                                <div className="position-absolute top-50 end-0 mx-3"  onClick={ ()=> handlePasswordSeen( imagePassword )}>
+                                <div className="position-absolute top-0 end-0 mx-2 mt-1"  onClick={ ()=> handlePasswordSeen( imagePassword )}>
                                     <img src={`/${imagePassword}.png`} alt="" style={{ width: '25px' }} />
                                 </div>
                                 </>
                             }
+                            </div>
                             {
                                 ((formType === 'register') && (input.name === 'checkPassword')) && 
                                 <span className="fst-italic">Password must contain upper and lowercase, number and special character</span>
