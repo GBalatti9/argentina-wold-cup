@@ -9,20 +9,20 @@ export const AppRouter = () => {
     return (
         <>
             <Routes>
-                <Route path="/login" element = { 
-                <PublicRoute>
-                    <LoginPage /> 
-                </PublicRoute>
-            
-            } />
-                <Route path="/register" element = { 
+                <Route path="/login" element={
+                    <PublicRoute>
+                        <LoginPage />
+                    </PublicRoute>
+
+                } />
+                <Route path="/register" element={
                     <PublicRoute>
                         <RegisterPage />
                     </PublicRoute>
-            
-            } />
 
-                <Route path="/forgetPassword" element = {
+                } />
+
+                <Route path="/forgetPassword" element={
                     <PublicRoute>
                         <ForgetPasswordPage />
                     </PublicRoute>
@@ -33,6 +33,12 @@ export const AppRouter = () => {
                         <PlayersAndStaffRoutes />
                     </PrivateRoute>
                 } />
+
+                <Route
+                    element = {
+                        <Navigate to="/login" replace />
+                    }
+                />
             </Routes>
         </>
     )
