@@ -13,11 +13,11 @@
             "destination": "/index.html"
         },
         {
-            "source": "/players/*",
+            "source": "/players/:path",
             "destination": "/index.html"
         },
         {
-            "source": "/staff/*",
+            "source": "/staff/:path",
             "destination": "/index.html"
         },
         {
@@ -29,7 +29,7 @@
             "destination": "/index.html"
         },
         {
-            "source": "/:path*",
+            "source": "/:path",
             "destination": "/index.html"
         }
     ]
