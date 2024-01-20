@@ -16,7 +16,8 @@ export const FormComponentCard = ({ type }) => {
 
     const [ disabled, setDisabled ] = useState(true);
     const [ formSent, setFormSent ] = useState(false);
-    const [ errors, setErrors ]     = useState([])
+    const [ errors, setErrors ]     = useState([]);
+    const [ message, setMessage ]     = useState('');
     const [ filteredInputsRefs, setFilteredInputsRefs ] = useState([])
     const [ imagePassword,  setImagePassword] = useState('hidden')
 
@@ -40,6 +41,19 @@ export const FormComponentCard = ({ type }) => {
         handleInputsValidation( name, value, ref, formState );
         !checkErrors(filteredInputsRefs) ? setDisabled(false) : setDisabled(true);
     };
+
+    useEffect(() => {
+        if ( formSent ) {
+            console.log('ESTOY ACA');
+            const timer = setTimeout(() => {
+                setMessage("Don't Leave. Just wait please");
+            }, 2000);
+
+
+            return () => clearTimeout(timer);
+        }
+
+    }, [formSent])
     
     const handleSubmit = async ( e, formType ) => {
         e.preventDefault();
@@ -112,9 +126,12 @@ export const FormComponentCard = ({ type }) => {
             {
                 formSent 
                 ? 
+                <>
                 <div className="spinner-border mx-auto mb-4" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </div>
+                <span className="mx-auto"> { message } </span>
+                </>
                 :
             <>
             
