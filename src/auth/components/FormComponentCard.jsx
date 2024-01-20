@@ -4,6 +4,7 @@ import { useContext, useState, useRef, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 
 import { AuthContext } from "../context/AuthContext";
+import { GmailButton } from "./GmailButton";
 
 import { getFormByType, checkErrors, handleInputsValidation, fetchApi }  from "../helpers";
 
@@ -45,12 +46,15 @@ export const FormComponentCard = ({ type }) => {
         // console.log({ formSent });
         
         if (formType === 'register') {
+            setFormSent( true );
             try {                
                 const sendData = await fetchApi( formType, formState );
 
                 if(sendData.errors.length === 0) {
+                    setFormSent(false);
                     return navigate('/login');
                 } else {
+                    setFormSent(false);
                     setErrors(sendData.errors)
                 }
 
@@ -60,6 +64,7 @@ export const FormComponentCard = ({ type }) => {
         }
         
         if (formType === 'login') {
+            setFormSent( true );
             try {
                 const sendData = await fetchApi( formType, formState );
 
@@ -67,12 +72,11 @@ export const FormComponentCard = ({ type }) => {
                     
                     const lastPathVisited = localStorage.getItem('lastPath') || '/';
                     login( sendData.user );
-                    console.log({sendData});
-                    setFormSent(true);
+                    setFormSent(false);
                     return navigate(lastPathVisited);
                 } else {
+                    setFormSent(false);
                     setErrors(sendData.errors);
-                    
 
                 }
                 } catch (error) {
@@ -103,8 +107,17 @@ export const FormComponentCard = ({ type }) => {
         <>
         <h2 className="text-center pt-3"> 
                 { formType === 'register' ? 'Register' : formType === 'login' ? 'Login' : 'Reset Password' }
-            </h2>
+        </h2>
             <hr />
+            {
+                formSent 
+                ? 
+                <div className="spinner-border mx-auto mb-4" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+                :
+            <>
+            
             <form className="d-flex flex-column" onSubmit={( e ) => { handleSubmit( e, formType )} }>
                 {
                     inputs.map(( input, i ) => (
@@ -189,11 +202,15 @@ export const FormComponentCard = ({ type }) => {
 
                     {
                         errors.length > 0 && errors.map(( error, i ) => (
-                            <p key={ error + i }>{ error }</p>
+                            <p key={ error + i } className="text-danger">{ error }</p>
                         ))
                     }
                 </div>
             </form>
+            
+            <GmailButton type = { type }/>
+            </>
+        }
         </>
     )
 }
