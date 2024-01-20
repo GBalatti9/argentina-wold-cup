@@ -17,11 +17,13 @@ export const TeamMemberPage = () => {
         if (role === 'Staff')  navigate( '/staff' );
     }
 
+    const imageTeamMember = `../assets/seleccionArgentina/${id}.jpg`;
+
     return (
         <div className="row mt-5 animate__animated animate__fadeIn">
             <div className="col-4">
                 <img 
-                    src={`/assets/seleccion-argentina/${ id }.jpg`} 
+                    src={imageTeamMember} 
                     alt={ `${member.name} ${member.lastName}` }
                     className="img-thumbnail" />
             </div>
