@@ -226,6 +226,9 @@ export const FormComponentCard = ({ type }) => {
             </form>
             
             <GmailButton type = { type }/>
+            <p className="text-center">
+            { formType === 'login' && 'Credentials to login: gas.balatti@gmail.com - Gaston11$' }
+            </p>
             </>
         }
         </>
